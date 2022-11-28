@@ -4,6 +4,7 @@ createApp({
     data(){
         return{
             activeImage : 0,
+            interval : '',
             slides : [
                 {
                     'image': 'img/01.webp',
@@ -44,6 +45,15 @@ createApp({
         },
         selectImg : function(i){
             this.activeImage = i;
+        },
+        autoSlideStart : function(){            
+            this.interval = setInterval(this.nextImg,2000)
+        },
+        autoSlideStop : function(){
+            clearInterval(this.interval);
         }
-    }
+    },
+    mounted(){
+        this.autoSlideStart();
+    } 
 }).mount("#app");
